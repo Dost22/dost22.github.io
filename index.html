@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,56 +10,71 @@
         body {
             margin: 0;
             font-family: 'Fira Code', monospace;
-            background: #1a1a1a; /* Darker base */
-            color: #d4d4d4; /* Softer text color */
+            background-color: #111;
+            color: #e0f7fa;
             line-height: 1.6;
             overflow-x: hidden;
-            /* Subtle animated background */
-            background-image: linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222),
-                              linear-gradient(135deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222);
+            position: relative;
+            /* No falling letters here */
+            background-image:
+                repeating-linear-gradient(45deg,
+                    #212121 0,
+                    #212121 10px,
+                    #111 10px,
+                    #111 20px);
             background-size: 20px 20px;
-            animation: animatedBackground 4s linear infinite;
-        }
-
-        @keyframes animatedBackground {
-            0% { background-position: 0 0, 0 0; }
-            100% { background-position: 40px 0, 40px 40px; }
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            background: rgba(30, 30, 30, 0.85); /* Slightly transparent navbar */
+            padding: 1.2rem 2.2rem;
+            background: rgba(17, 17, 17, 0.9);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+            backdrop-filter: blur(12px);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar:hover {
+            background: rgba(17, 17, 17, 0.95);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
         }
 
         .nav-brand {
             font-weight: bold;
-            font-size: 1.7rem;
-            color: #80cbc4; /* Teal accent */
+            font-size: 2rem;
+            color: #64ffda;
+            transition: color 0.3s ease, transform 0.2s ease;
+            text-shadow: 0 0 5px rgba(100, 255, 218, 0.8);
+        }
+
+        .nav-brand:hover {
+            color: #a7f9e3;
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.9);
         }
 
         .nav-links a {
-            margin-left: 1.5rem;
-            color: #b0bec5; /* Light blue-grey */
+            margin-left: 1.8rem;
+            color: #b0f0d2;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .nav-links a:hover {
-            color: #80cbc4;
+            color: #64ffda;
+            text-shadow: 0 0 3px rgba(100, 255, 218, 0.7);
         }
 
         .hero {
             text-align: center;
-            padding: 5rem 2rem 4rem;
-            background: linear-gradient(135deg, #262626, #303030); /* Darker gradient */
+            padding: 6rem 2.5rem 5rem;
+            background:  linear-gradient(135deg, #1a1a1a, #262626);
             animation: fadeIn 1.2s ease;
             position: relative;
             display: flex;
@@ -70,44 +84,67 @@
         }
 
         .hero h1 {
-            font-size: 3.6rem;
-            margin-bottom: 0.6rem;
-            color: #80cbc4;
+            font-size: 4.5rem;
+            margin-bottom: 0.8rem;
+            color: #64ffda;
+            transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.9);
+        }
+
+        .hero h1:hover {
+            color: #a7f9e3;
+            transform: scale(1.04);
+            text-shadow: 0 0 15px rgba(100, 255, 218, 0.95);
         }
 
         .tagline {
-            font-size: 1.45rem;
-            color: #9e9e9e; /* Grey */
-            margin-bottom: 1.8rem;
+            font-size: 1.6rem;
+            color: #b8c6db;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            text-shadow: 0 0 2px rgba(184, 198, 219, 0.5);
+        }
+
+        .tagline:hover {
+            color: #e0f7fa;
+            text-shadow: 0 0 4px rgba(184, 198, 219, 0.6);
         }
 
         .contact-icons {
             display: flex;
-            gap: 1.2rem;
-            margin-bottom: 1rem;
+            gap: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .contact-icons a {
-            color: #bdbdbd; /* Light grey */
-            font-size: 2rem;
+            color: #d4e1e5;
+            font-size: 2.5rem;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
         }
 
         .contact-icons a:hover {
-            color: #80cbc4;
-            transform: scale(1.15);
+            color: #64ffda;
+            transform: scale(1.2);
+            text-shadow: 0 0 8px rgba(100, 255, 218, 0.9);
         }
 
         section {
-            padding: 3rem 2rem;
-            max-width: 1100px;
+            padding: 4rem 2.5rem;
+            max-width: 1200px;
             margin: 0 auto;
-            border-bottom: 1px solid #424242; /* Darker divider */
+            border-bottom: 1px solid #333;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.1s; /* Staggered appearance */
+            animation-delay: 0.1s;
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
         }
 
         section:last-child {
@@ -115,12 +152,20 @@
         }
 
         h2 {
-            font-size: 2.4rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #80cbc4;
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #64ffda;
             display: inline-block;
-            padding-bottom: 0.3rem;
-            color: #e0e0e0;
+            padding-bottom: 0.5rem;
+            color: #e0f7fa;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease, text-shadow 0.3s ease;
+            text-shadow: 0 0 5px rgba(100, 255, 218, 0.8);
+        }
+
+        h2:hover {
+            color: #a7f9e3;
+            border-bottom-color: #a7f9e3;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.9);
         }
 
         .about-cards,
@@ -128,51 +173,64 @@
         .badge-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .card {
-            background: #212121; /* Dark card background */
-            padding: 1.1rem;
-            border-radius: 0.4rem;
-            flex: 1 1 270px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            background: #222;
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            flex: 1 1 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            border: 1px solid #333;
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            border-color: #64ffda;
         }
 
         .badge-container span {
-            background: #80cbc4;
-            color: #212121;
-            padding: 0.5rem 1rem;
-            border-radius: 1.8rem;
-            font-size: 0.95rem;
-            margin: 0.25rem 0.15rem;
+            background: #64ffda;
+            color: #1a1a1a;
+            padding: 0.7rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 1.1rem;
+            margin: 0.3rem 0.2rem;
             display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+            text-shadow: 0 0 3px rgba(100, 255, 218, 0.7);
+        }
+
+        .badge-container span:hover {
+            background-color: #a7f9e3;
+            transform: scale(1.1);
+            text-shadow: 0 0 6px rgba(100, 255, 218, 0.8);
         }
 
         a {
-            color: #80cbc4;
+            color: #64ffda;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         a:hover {
             text-decoration: underline;
+            color: #a7f9e3;
+            text-shadow: 0 0 3px rgba(100, 255, 218, 0.7);
         }
 
         /* Carousel Styles */
         .carousel-container {
             position: relative;
             overflow: hidden;
-            margin-top: 1rem;
-            border-radius: 0.4rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            margin-top: 2rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
+            border: 1px solid #333;
         }
 
         .carousel-slide {
@@ -185,30 +243,36 @@
             flex-shrink: 0;
             object-fit: cover;
             height: auto;
+            border-radius: 0.8rem;
         }
 
         .carousel-nav {
             position: absolute;
-            bottom: 0.5rem;
+            bottom: 1rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 0.3rem;
+            gap: 0.5rem;
         }
 
         .carousel-dot {
-            width: 0.6rem;
-            height: 0.6rem;
+            width: 0.8rem;
+            height: 0.8rem;
             border-radius: 50%;
-            background-color: #616161;
+            background-color: #777;
             opacity: 0.7;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .carousel-dot.active {
-            background-color: #80cbc4;
+            background-color: #a7f9e3;
             opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            transform: scale(1.1);
         }
 
         /* Animations */
@@ -218,12 +282,11 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar">
         <div class="nav-brand">Dost Seferoğlu</div>
@@ -236,7 +299,6 @@
             <a href="#projects">Projects</a>
         </div>
     </nav>
-
     <section class="hero" id="home">
         <div class="contact-icons">
             <a href="mailto:dostseferoglu@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -247,7 +309,6 @@
         <h1>Dost Seferoğlu</h1>
         <p class="tagline">Olympiad Gold Medalist | Codeforces Master | AI & Math Enthusiast</p>
     </section>
-
     <section id="about">
         <h2>About Me</h2>
         <p>I’m a competitive programming enthusiast, TÜBİTAK Olympiad gold medalist, and math aficionado with a strong interest in algorithm design and AI
@@ -258,7 +319,6 @@
             <div class="card"><strong>Specialties:</strong> Competitive Programming, Math Algorithms, Artificial Intelligence</div>
         </div>
     </section>
-
     <section id="skills">
         <h2>Skills</h2>
         <div id="skills-list" class="badge-container">
@@ -275,7 +335,6 @@
             <span>Competitive Programming</span>
         </div>
     </section>
-
     <section id="achievements">
         <h2>Achievements</h2>
         <div id="achievements-list" class="card-container">
@@ -290,7 +349,6 @@
             <div class="card">Participant, Algorithms and Code Training School (ACTS) in Serbia and Romania hosted by JetBrains</div>
         </div>
     </section>
-
     <section id="experience">
         <h2>Experience</h2>
         <div class="card-container">
@@ -302,7 +360,7 @@
                 <br>
                 Algoleague platformu için problemsetting.<br>
                 <br>
-                <span style="color: #80cbc4;">Competitive Programming, C++ ve +2 yetenek</span>
+                <span style="color: #a7ffeb;">Competitive Programming, C++ ve +2 yetenek</span>
             </div>
             <div class="card">
                 <strong>TÜBİTAK BİLGEM U130 Kriptoloji Birimi</strong><br>
@@ -311,7 +369,7 @@
                 <br>
                 TÜBİTAK BİLGEM U130 kriptoloji birimi stajyeri<br>
                 <br>
-                <span style="color: #80cbc4;">Competitive Programming ve Algoritmalar</span>
+                <span style="color: #a7ffeb;">Competitive Programming ve Algoritmalar</span>
             </div>
             <div class="card">
                 <strong>Stajyer</strong><br>
@@ -320,7 +378,7 @@
                 <br>
                 TÜBİTAK BİLGEM bünyesindeki B3 Lab yazılım geliştirme ofisinde stajyerlik.<br>
                 <br>
-                <span style="color: #80cbc4;">C++, Algoritmalar ve +3 yetenek</span>
+                <span style="color: #a7ffeb;">C++, Algoritmalar ve +3 yetenek</span>
             </div>
             <div class="card">
                 <strong>AI Developer</strong><br>
@@ -330,11 +388,10 @@
                 <br>
                 TÜBİTAK Fen Lisesi Yapay Zeka Ekibi<br>
                 <br>
-                <span style="color: #80cbc4;">Yapay Zeka, Python ve +2 yetenek</span>
+                <span style="color: #a7ffeb;">Yapay Zeka, Python ve +2 yetenek</span>
             </div>
         </div>
     </section>
-
     <section id="showcase">
         <h2>Showcase</h2>
         <div class="carousel-container">
@@ -350,7 +407,6 @@
             </div>
         </div>
     </section>
-
     <section id="projects">
         <h2>Projects</h2>
         <div id="projects-list" class="card-container">
@@ -360,14 +416,10 @@
             <div class="card">Unmanned Underwater Vehicle — PID System (MATLAB Simulink)</div>
         </div>
     </section>
-
     <script>
         const carouselSlide = document.querySelector('.carousel-slide');
         const carouselImages = document.querySelectorAll('.carousel-slide img');
-        const prevButton = document.querySelector('#prevBtn');
-        const nextButton = document.querySelector('#nextBtn');
         const dots = document.querySelectorAll('.carousel-dot');
-
         let counter = 0;
         const slideWidth = carouselImages[0].clientWidth;
 
@@ -393,37 +445,29 @@
             goToSlide(index);
         }
 
-        // Basic automatic sliding (optional)
-        setInterval(nextSlide, 3000); // Change image every 3 seconds
-
-        // Initial setup
+        setInterval(nextSlide, 2500);
         goToSlide(0);
 
-        // Make sure the slide width is recalculated on resize
         window.addEventListener('resize', () => {
             slideWidth = carouselImages[0].clientWidth;
             goToSlide(counter);
         });
 
-        // Animate sections on scroll
         const sections = document.querySelectorAll('section');
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.15 // Trigger when 15% of the section is visible
+            threshold: 0.15
         });
-
         sections.forEach(section => {
             observer.observe(section);
         });
     </script>
 </body>
-
 </html>
