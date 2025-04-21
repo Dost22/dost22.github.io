@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dost Seferoğlu | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -16,39 +17,16 @@
             overflow-x: hidden;
         }
 
-        /* Contact Bar Styles */
-        .contact-bar {
-            background: rgba(20, 20, 20, 0.95);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(8px);
-            animation: fadeIn 1.2s ease;
-        }
-
-        .contact-bar a {
-            color: #00ffae;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 1.1rem;
-        }
-
-        .contact-bar a:hover {
-            text-decoration: underline;
-        }
-
-        /* Navbar Styles (moved down) */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background: #1a1a1a;
+            background: rgba(20, 20, 20, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
         }
 
         .nav-brand {
@@ -70,20 +48,42 @@
 
         .hero {
             text-align: center;
-            padding: 7rem 2rem 5rem;
+            padding: 5rem 2rem 3rem; /* Reduced top padding */
             background: linear-gradient(135deg, #1a1a1a, #222);
             animation: fadeIn 1.2s ease;
+            position: relative; /* For absolute positioning of icons */
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem; /* Reduced margin */
             color: #00ffae;
         }
 
         .tagline {
             font-size: 1.4rem;
             color: #ccc;
+            margin-bottom: 1.5rem; /* Added margin for spacing */
+        }
+
+        .contact-icons {
+            position: absolute;
+            top: 1rem; /* Adjust vertical position */
+            right: 2rem; /* Adjust horizontal position */
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-icons a {
+            color: #f5f5f5;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-icons a:hover {
+            color: #00ffae;
+            transform: scale(1.2);
         }
 
         section {
@@ -220,12 +220,6 @@
 </head>
 
 <body>
-    <div class="contact-bar">
-        <a href="mailto:dostseferoglu@gmail.com">Email</a>
-        <a href="https://github.com/Dost22" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/dost-sefero%C4%9Flu-072954258/" target="_blank">LinkedIn</a>
-    </div>
-
     <nav class="navbar">
         <div class="nav-brand">Dost Seferoğlu</div>
         <div class="nav-links">
@@ -239,6 +233,12 @@
     </nav>
 
     <section class="hero" id="home">
+        <div class="contact-icons">
+            <a href="mailto:dostseferoglu@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/Dost22" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/dost-sefero%C4%9Flu-072954258/" target="_blank"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
         <h1>Dost Seferoğlu</h1>
         <p class="tagline">Olympiad Gold Medalist | Codeforces Master | AI & Math Enthusiast</p>
     </section>
@@ -367,10 +367,6 @@
         const slideWidth = carouselImages[0].clientWidth;
 
         function goToSlide(index) {
-            let combinedWidth = 0;
-            for (let i = 0; i < index; i++) {
-                combinedWidth += carouselImages[i].clientWidth;
-            }
             carouselSlide.style.transform = `translateX(-${slideWidth * index}px)`;
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
