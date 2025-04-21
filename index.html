@@ -11,10 +11,20 @@
         body {
             margin: 0;
             font-family: 'Fira Code', monospace;
-            background: #121212; /* Darker background for better contrast */
-            color: #e0e0e0; /* Lighter text color for readability */
+            background: #1a1a1a; /* Darker base */
+            color: #d4d4d4; /* Softer text color */
             line-height: 1.6;
             overflow-x: hidden;
+            /* Subtle animated background */
+            background-image: linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222),
+                              linear-gradient(135deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222);
+            background-size: 20px 20px;
+            animation: animatedBackground 4s linear infinite;
+        }
+
+        @keyframes animatedBackground {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 40px 0, 40px 40px; }
         }
 
         .navbar {
@@ -22,35 +32,35 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background: rgba(30, 30, 30, 0.95); /* Slightly darker navbar */
+            background: rgba(30, 30, 30, 0.85); /* Slightly transparent navbar */
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px); /* Slightly stronger blur */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
         }
 
         .nav-brand {
             font-weight: bold;
-            font-size: 1.8rem; /* Slightly larger brand name */
-            color: #00ffc6; /* A slightly different accent color */
+            font-size: 1.7rem;
+            color: #80cbc4; /* Teal accent */
         }
 
         .nav-links a {
             margin-left: 1.5rem;
-            color: #c7c7c7; /* Slightly lighter link color */
+            color: #b0bec5; /* Light blue-grey */
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #00ffc6;
+            color: #80cbc4;
         }
 
         .hero {
             text-align: center;
-            padding: 5rem 2rem 4rem; /* Adjusted hero padding */
-            background: linear-gradient(135deg, #202020, #2a2a2a); /* Darker hero background */
+            padding: 5rem 2rem 4rem;
+            background: linear-gradient(135deg, #262626, #303030); /* Darker gradient */
             animation: fadeIn 1.2s ease;
             position: relative;
             display: flex;
@@ -60,52 +70,57 @@
         }
 
         .hero h1 {
-            font-size: 3.8rem; /* Slightly larger name */
-            margin-bottom: 0.5rem; /* Reduced name margin */
-            color: #00ffc6;
+            font-size: 3.6rem;
+            margin-bottom: 0.6rem;
+            color: #80cbc4;
         }
 
         .tagline {
-            font-size: 1.5rem; /* Slightly larger tagline */
-            color: #b3b3b3; /* Slightly lighter tagline color */
-            margin-bottom: 1.5rem; /* Adjusted tagline margin */
+            font-size: 1.45rem;
+            color: #9e9e9e; /* Grey */
+            margin-bottom: 1.8rem;
         }
 
         .contact-icons {
             display: flex;
-            gap: 1.5rem; /* Slightly reduced gap for icon spacing */
+            gap: 1.2rem;
             margin-bottom: 1rem;
         }
 
         .contact-icons a {
-            color: #d4d4d4; /* Slightly lighter icon color */
-            font-size: 2.2rem; /* Slightly smaller icons */
+            color: #bdbdbd; /* Light grey */
+            font-size: 2rem;
             text-decoration: none;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .contact-icons a:hover {
-            color: #00ffc6;
-            transform: scale(1.2);
+            color: #80cbc4;
+            transform: scale(1.15);
         }
 
         section {
-            padding: 3rem 2rem; /* Reduced default section padding */
+            padding: 3rem 2rem;
             max-width: 1100px;
-            margin: 0 auto; /* Center sections with auto margins */
-            border-bottom: 1px solid #333; /* Subtle section divider */
+            margin: 0 auto;
+            border-bottom: 1px solid #424242; /* Darker divider */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.1s; /* Staggered appearance */
         }
 
         section:last-child {
-            border-bottom: none; /* Remove divider from the last section */
+            border-bottom: none;
         }
 
         h2 {
-            font-size: 2.5rem; /* Slightly larger heading */
-            margin-bottom: 1rem; /* Reduced heading margin */
-            border-bottom: 2px solid #00ffc6;
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #80cbc4;
             display: inline-block;
-            padding-bottom: 0.3rem; /* Add some padding below the border */
+            padding-bottom: 0.3rem;
+            color: #e0e0e0;
         }
 
         .about-cards,
@@ -114,40 +129,35 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 1rem; /* Reduced top margin for cards/badges */
+            margin-top: 1rem;
         }
 
         .card {
-            background: #1e1e1e; /* Slightly darker card background */
-            padding: 1.2rem; /* Slightly increased card padding */
-            border-radius: 0.5rem;
-            flex: 1 1 280px; /* Slightly wider minimum width */
-            transition: transform 0.3s ease, background 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle card shadow */
+            background: #212121; /* Dark card background */
+            padding: 1.1rem;
+            border-radius: 0.4rem;
+            flex: 1 1 270px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         }
 
         .card:hover {
-            transform: translateY(-3px); /* Reduced hover lift */
-            background: #282828;
+            transform: translateY(-3px);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
         }
 
         .badge-container span {
-            background: #00ffc6; /* Updated badge color */
-            color: #121212;
-            padding: 0.6rem 1.2rem; /* Slightly increased badge padding */
-            border-radius: 2rem;
-            font-size: 1rem; /* Slightly larger badge font */
-            margin: 0.3rem 0.2rem; /* Adjusted badge margins */
+            background: #80cbc4;
+            color: #212121;
+            padding: 0.5rem 1rem;
+            border-radius: 1.8rem;
+            font-size: 0.95rem;
+            margin: 0.25rem 0.15rem;
             display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .badge-container span:hover {
-            transform: scale(1.05); /* Reduced hover scale */
         }
 
         a {
-            color: #00ffc6;
+            color: #80cbc4;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -156,13 +166,13 @@
             text-decoration: underline;
         }
 
-        /* Carousel Styles (Slight adjustments for consistency) */
+        /* Carousel Styles */
         .carousel-container {
             position: relative;
             overflow: hidden;
-            margin-top: 1rem; /* Reduced carousel top margin */
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
+            border-radius: 0.4rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         }
 
         .carousel-slide {
@@ -179,51 +189,37 @@
 
         .carousel-nav {
             position: absolute;
-            bottom: 0.5rem; /* Adjusted nav position */
+            bottom: 0.5rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 0.3rem; /* Reduced dot gap */
+            gap: 0.3rem;
         }
 
         .carousel-dot {
-            width: 0.7rem;
-            height: 0.7rem;
+            width: 0.6rem;
+            height: 0.6rem;
             border-radius: 50%;
-            background-color: #777;
+            background-color: #616161;
             opacity: 0.7;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         .carousel-dot.active {
-            background-color: #00ffc6;
+            background-color: #80cbc4;
             opacity: 1;
         }
 
-        /* End Carousel Styles */
+        /* Animations */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px); /* Reduced fade-in distance */
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px); /* Reduced fade-up distance */
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -306,7 +302,7 @@
                 <br>
                 Algoleague platformu için problemsetting.<br>
                 <br>
-                <span style="color: #00ffae;">Competitive Programming, C++ ve +2 yetenek</span>
+                <span style="color: #80cbc4;">Competitive Programming, C++ ve +2 yetenek</span>
             </div>
             <div class="card">
                 <strong>TÜBİTAK BİLGEM U130 Kriptoloji Birimi</strong><br>
@@ -315,7 +311,7 @@
                 <br>
                 TÜBİTAK BİLGEM U130 kriptoloji birimi stajyeri<br>
                 <br>
-                <span style="color: #00ffae;">Competitive Programming ve Algoritmalar</span>
+                <span style="color: #80cbc4;">Competitive Programming ve Algoritmalar</span>
             </div>
             <div class="card">
                 <strong>Stajyer</strong><br>
@@ -324,7 +320,7 @@
                 <br>
                 TÜBİTAK BİLGEM bünyesindeki B3 Lab yazılım geliştirme ofisinde stajyerlik.<br>
                 <br>
-                <span style="color: #00ffae;">C++, Algoritmalar ve +3 yetenek</span>
+                <span style="color: #80cbc4;">C++, Algoritmalar ve +3 yetenek</span>
             </div>
             <div class="card">
                 <strong>AI Developer</strong><br>
@@ -334,7 +330,7 @@
                 <br>
                 TÜBİTAK Fen Lisesi Yapay Zeka Ekibi<br>
                 <br>
-                <span style="color: #00ffae;">Yapay Zeka, Python ve +2 yetenek</span>
+                <span style="color: #80cbc4;">Yapay Zeka, Python ve +2 yetenek</span>
             </div>
         </div>
     </section>
@@ -407,6 +403,25 @@
         window.addEventListener('resize', () => {
             slideWidth = carouselImages[0].clientWidth;
             goToSlide(counter);
+        });
+
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, {
+            threshold: 0.15 // Trigger when 15% of the section is visible
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
