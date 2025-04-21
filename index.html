@@ -1,473 +1,1468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dost Seferoğlu | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dost Seferoğlu | Algorithmic Innovator</title>
+    <meta name="description" content="Portfolio of Dost Seferoğlu, a TÜBİTAK Fen Lisesi student excelling in competitive programming, AI, and cryptography.">
+    <meta name="keywords" content="Dost Seferoğlu, competitive programming, AI, cryptography, TÜBİTAK, Codeforces">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32?text=DS">
     <style>
-        body {
-            margin: 0;
-            font-family: 'Fira Code', monospace;
-            background-color: #111;
-            color: #e0f7fa;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-            /* No falling letters here */
-            background-image:
-                repeating-linear-gradient(45deg,
-                    #111 0,
-                    #111 10px,
-                    #111 10px,
-                    #111 20px);
-            background-size: 20px 20px;
+        :root {
+            --bg-primary: #0d1a2d;
+            --bg-secondary: #152238;
+            --accent: #00ffcc;
+            --accent-dark: #00b894;
+            --text-primary: #e6f1ff;
+            --text-secondary: #a3bffa;
+            --card-bg: #1a2a44;
+            --nav-height: 5rem;
+            --transition: all 0.4s ease;
+            --gradient: linear-gradient(45deg, #00ffcc, #00b894);
         }
 
-        .navbar {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg-primary);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        nav.scrolled {
+            background: var(--bg-secondary);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 2.2rem;
-            background: rgba(17, 17, 17, 0.9);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
         }
 
-        .navbar:hover {
-            background: rgba(17, 17, 17, 0.95);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 2.5rem;
+            text-decoration: none;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glitch 2s infinite;
         }
 
-        .nav-brand {
-            font-weight: bold;
-            font-size: 2rem;
-            color: #64ffda;
-            transition: color 0.3s ease, transform 0.2s ease;
-            text-shadow: 0 0 5px rgba(100, 255, 218, 0.8);
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 0); }
+            80% { transform: translate(2px, 2px); }
+            100% { transform: translate(0); }
         }
 
-        .nav-brand:hover {
-            color: #a7f9e3;
-            transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.9);
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
         }
 
         .nav-links a {
-            margin-left: 1.8rem;
-            color: #b0f0d2;
+            color: var(--text-primary);
             text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-family: 'Fira Code', monospace;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 0;
+            background: var(--gradient);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: #64ffda;
-            text-shadow: 0 0 3px rgba(100, 255, 218, 0.7);
+            color: var(--accent);
+            transform: translateY(-3px);
         }
 
-        .hero {
-            text-align: center;
-            padding: 6rem 2.5rem 5rem;
-            background:  linear-gradient(135deg, #1a1a1a, #262626);
-            animation: fadeIn 1.2s ease;
-            position: relative;
-            display: flex;
+        .hamburger {
+            display: none;
             flex-direction: column;
-            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .hamburger .line {
+            width: 35px;
+            height: 4px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .hamburger.active .line:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .line:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 0;
+            min-height: 500px;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+            font-family: 'Fira Code', monospace;
+            position: relative;
+            display: inline-block;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 5px;
+            bottom: -12px;
+            left: 0;
+            background: var(--gradient);
+            animation: slideIn 1.5s ease;
+        }
+
+        @keyframes slideIn {
+            0% { width: 0; }
+            100% { width: 70%; }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: calc(var(--nav-height) + 5rem);
+            background: linear-gradient(rgba(13, 26, 45, 0.95), rgba(13, 26, 45, 0.95));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            animation: glitch 2s infinite;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 4s steps(40, end) infinite;
+        }
+
+        @keyframes typing {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        .cta-button {
+            background: var(--gradient);
+            color: var(--bg-primary);
+            padding: 1.5rem 3rem;
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            border-radius: 10px;
+            display: inline-block;
+            margin-right: 2.5rem;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 255, 204, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        /* About */
+        .about-content {
+            display: flex;
+            gap: 5rem;
             align-items: center;
         }
 
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 0.8rem;
-            color: #64ffda;
-            transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.9);
+        .about-text p {
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            font-size: 1.3rem;
         }
 
-        .hero h1:hover {
-            color: #a7f9e3;
-            transform: scale(1.04);
-            text-shadow: 0 0 15px rgba(100, 255, 218, 0.95);
+        .skills-radar {
+            max-width: 400px;
+            margin: 3rem auto;
         }
 
-        .tagline {
-            font-size: 1.6rem;
-            color: #b8c6db;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-            text-shadow: 0 0 2px rgba(184, 198, 219, 0.5);
+        .about-image img {
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
         }
 
-        .tagline:hover {
-            color: #e0f7fa;
-            text-shadow: 0 0 4px rgba(184, 198, 219, 0.6);
-        }
-
-        .contact-icons {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .contact-icons a {
-            color: #d4e1e5;
-            font-size: 2.5rem;
-            text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .contact-icons a:hover {
-            color: #64ffda;
-            transform: scale(1.2);
-            text-shadow: 0 0 8px rgba(100, 255, 218, 0.9);
-        }
-
-        section {
-            padding: 4rem 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-bottom: 1px solid #333;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 0.1s;
-            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        section:hover {
-            opacity: 1;
-            transform: translateY(0);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        h2 {
-            font-size: 3rem;
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid #64ffda;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-            color: #e0f7fa;
-            transition: color 0.3s ease, border-bottom-color 0.3s ease, text-shadow 0.3s ease;
-            text-shadow: 0 0 5px rgba(100, 255, 218, 0.8);
-        }
-
-        h2:hover {
-            color: #a7f9e3;
-            border-bottom-color: #a7f9e3;
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.9);
-        }
-
-        .about-cards,
-        .card-container,
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .card {
-            background: #222;
-            padding: 1.5rem;
-            border-radius: 0.6rem;
-            flex: 1 1 300px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-            border: 1px solid #333;
-        }
-
-        .card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-            border-color: #64ffda;
-        }
-
-        .badge-container span {
-            background: #64ffda;
-            color: #1a1a1a;
-            padding: 0.7rem 1.2rem;
-            border-radius: 2rem;
-            font-size: 1.1rem;
-            margin: 0.3rem 0.2rem;
-            display: inline-block;
-            transition: background-color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-            text-shadow: 0 0 3px rgba(100, 255, 218, 0.7);
-        }
-
-        .badge-container span:hover {
-            background-color: #a7f9e3;
+        .about-image img:hover {
             transform: scale(1.1);
-            text-shadow: 0 0 6px rgba(100, 255, 218, 0.8);
         }
 
-        a {
-            color: #64ffda;
-            text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+        /* Achievements */
+        .achievements-container {
+            text-align: center;
         }
 
-        a:hover {
-            text-decoration: underline;
-            color: #a7f9e3;
-            text-shadow: 0 0 3px rgba(100, 255, 218, 0.7);
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
+        .featured-achievement {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            margin-bottom: 5rem;
+            border: 2px solid var(--accent);
             position: relative;
             overflow: hidden;
-            margin-top: 2rem;
-            border-radius: 0.8rem;
-            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
-            border: 1px solid #333;
         }
 
-        .carousel-slide {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            flex-shrink: 0;
-            object-fit: cover;
-            height: auto;
-            border-radius: 0.8rem;
-        }
-
-        .carousel-nav {
+        .featured-achievement::before {
+            content: '';
             position: absolute;
-            bottom: 1rem;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .featured-achievement h3 {
+            font-size: 2.2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-achievement p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            position: relative;
+            text-align: center;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 255, 204, 0.3);
+        }
+
+        .achievement-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .achievement-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .achievement-date {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-top: 1rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Timeline (Experience & Training) */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--gradient);
+            top: 0;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
         }
 
-        .carousel-dot {
-            width: 0.8rem;
-            height: 0.8rem;
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
             border-radius: 50%;
-            background-color: #777;
-            opacity: 0.7;
+            top: 30px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -13px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -13px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline-desc {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-period {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-top: 1rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 3.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: relative;
         }
 
-        .carousel-dot.active {
-            background-color: #a7f9e3;
-            opacity: 1;
-            transform: scale(1.2);
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 255, 204, 0.3);
         }
 
-        .carousel-dot:hover {
-            transform: scale(1.1);
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            loading: lazy;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .project-card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .project-card-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .project-card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            list-style: none;
+        }
+
+        .project-card-tech li {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            background: var(--accent-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .project-links a {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-right: 2rem;
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            loading: lazy;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 255, 204, 0.3);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--text-primary);
+            padding: 1rem;
+            font-size: 1rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            padding: 4rem;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 95%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        /* Gallery Modal */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .gallery-modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .gallery-modal-caption {
+            color: var(--text-primary);
+            text-align: center;
+            margin-top: 1rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .gallery-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: var(--accent);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-modal-nav:hover {
+            color: var(--text-primary);
+        }
+
+        .gallery-modal-prev {
+            left: 20px;
+        }
+
+        .gallery-modal-next {
+            right: 20px;
+        }
+
+        .gallery-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2rem;
+            color: var(--accent);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        /* Featured Algorithm */
+        .algorithm-container {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .algorithm-canvas {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            background: var(--bg-primary);
+            margin: 2rem 0;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 8rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 800px;
+            margin: 5rem auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: var(--bg-primary);
+            border: 2px solid var(--accent-dark);
+            padding: 1.5rem;
+            color: var(--text-primary);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+
+        .contact-form button {
+            background: var(--gradient);
+            color: var(--bg-primary);
+            padding: 1.5rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Fira Code', monospace;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 255, 204, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 5rem 0;
+            color: var(--text-secondary);
+            font-family: 'Fira Code', monospace;
+            background: var(--bg-primary);
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: var(--nav-height);
+                right: 0;
+                width: 350px;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 4rem;
+                box-shadow: -6px 0 15px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image img {
+                max-width: 100%;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::before {
+                left: 17px;
+            }
+
+            .project-card img,
+            .gallery-item img {
+                height: 200px;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+
+            .modal img {
+                height: 250px;
+            }
+
+            .featured-achievement {
+                padding: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .cta-button {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .project-card img,
+            .gallery-item img {
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">Dost Seferoğlu</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">DS</a>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#training">Training</a>
+                <a href="#algorithm">Algorithm</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
     </nav>
-    <section class="hero" id="home">
-        <div class="contact-icons">
-            <a href="mailto:dostseferoglu@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/Dost22" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/dost-sefero%C4%9Flu-072954258/" target="_blank"
-                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div>
-        <h1>Dost Seferoğlu</h1>
-        <p class="tagline">Olympiad Gold Medalist | Codeforces Master | AI & Math Enthusiast</p>
-    </section>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I’m a competitive programming enthusiast, TÜBİTAK Olympiad gold medalist, and math aficionado with a strong interest in algorithm design and AI
-            challenges.</p>
-        <div class="about-cards">
-            <div class="card"><strong>Based in:</strong> Turkey</div>
-            <div class="card"><strong>Favorite Language:</strong> C++, Python</div>
-            <div class="card"><strong>Specialties:</strong> Competitive Programming, Math Algorithms, Artificial Intelligence</div>
-        </div>
-    </section>
-    <section id="skills">
-        <h2>Skills</h2>
-        <div id="skills-list" class="badge-container">
-            <span>C++</span>
-            <span>Python</span>
-            <span>MATLAB</span>
-            <span>Algorithms</span>
-            <span>TensorFlow</span>
-            <span>PyTorch</span>
-            <span>Simulink</span>
-            <span>Data Structures</span>
-            <span>Graph Theory</span>
-            <span>Machine Learning</span>
-            <span>Competitive Programming</span>
-        </div>
-    </section>
-    <section id="achievements">
-        <h2>Achievements</h2>
-        <div id="achievements-list" class="card-container">
-            <div class="card">Gold Medal — TÜBİTAK National Olympiad (Informatics)</div>
-            <div class="card">Silver Medal — JetBrains Youth Challenge (Math Track)</div>
-            <div class="card">Silver Medal — Istanbul Science Olympiad 2025</div>
-            <div class="card">2nd Place — Üsküdar American College Codefest 2025</div>
-            <div class="card">Finalist — Iranian Combinatorics Olympiad 2024</div>
-            <div class="card">Participant — APIO 2024</div>
-            <div class="card">Master Rank — Codeforces (Top 1.5%)</div>
-            <div class="card">Organizer & Problemsetter — AlgoLeague</div>
-            <div class="card">Participant, Algorithms and Code Training School (ACTS) in Serbia and Romania hosted by JetBrains</div>
-        </div>
-    </section>
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="card-container">
-            <div class="card">
-                <strong>Problemsetter</strong><br>
-                AlgoLeague · Serbest çalışan<br>
-                Ağu 2024 - Halen · 9 ay<br>
-                İstanbul, Türkiye · Uzaktan<br>
-                <br>
-                Algoleague platformu için problemsetting.<br>
-                <br>
-                <span style="color: #a7ffeb;">Competitive Programming, C++ ve +2 yetenek</span>
-            </div>
-            <div class="card">
-                <strong>TÜBİTAK BİLGEM U130 Kriptoloji Birimi</strong><br>
-                Stajyer<br>
-                Kas 2024 - Halen · 6 ay<br>
-                <br>
-                TÜBİTAK BİLGEM U130 kriptoloji birimi stajyeri<br>
-                <br>
-                <span style="color: #a7ffeb;">Competitive Programming ve Algoritmalar</span>
-            </div>
-            <div class="card">
-                <strong>Stajyer</strong><br>
-                Yarı zamanlı<br>
-                Eki 2022 - Kas 2024 · 2 yıl 2 ay<br>
-                <br>
-                TÜBİTAK BİLGEM bünyesindeki B3 Lab yazılım geliştirme ofisinde stajyerlik.<br>
-                <br>
-                <span style="color: #a7ffeb;">C++, Algoritmalar ve +3 yetenek</span>
-            </div>
-            <div class="card">
-                <strong>AI Developer</strong><br>
-                TFL.AI · Serbest çalışan<br>
-                Kas 2024 - Halen · 6 ay<br>
-                Gebze, Kocaeli, Türkiye<br>
-                <br>
-                TÜBİTAK Fen Lisesi Yapay Zeka Ekibi<br>
-                <br>
-                <span style="color: #a7ffeb;">Yapay Zeka, Python ve +2 yetenek</span>
+
+    <!-- Hero -->
+    <section class="hero" id="home" data-aos="fade-up">
+        <canvas class="hero-canvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Dost Seferoğlu</h1>
+                <h2>Algorithmic Innovator & AI Enthusiast</h2>
+                <p class="tagline">Crafting Algorithms, Shaping the Future</p>
+                <p>TÜBİTAK Fen Lisesi student (2021-2026) with a passion for competitive programming, cryptography, and AI. Gold medalist in TÜBİTAK Olympiads, Codeforces Master, and top 100 in LGS 2021 among 1M+ candidates.</p>
+                <div>
+                    <a href="#projects" class="cta-button">Discover Projects</a>
+                    <a href="/path/to/CV3.pdf" download class="cta-button">Download CV</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Dost22" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/dost-sefero%C4%9Flu-072954258/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:dostseferoglu@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </section>
-    <section id="showcase">
-        <h2>Showcase</h2>
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <img src="1739636275845.jpeg" alt="Showcase Image 1">
-                <img src="i3.jpeg" alt="Showcase Image 2">
-                <img src="i2.jpeg" alt="Showcase Image 3">
-            </div>
-            <div class="carousel-nav">
-                <span class="carousel-dot active" onclick="currentSlide(0)"></span>
-                <span class="carousel-dot" onclick="currentSlide(1)"></span>
-                <span class="carousel-dot" onclick="currentSlide(2)"></span>
+
+    <!-- About -->
+    <section id="about" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I’m a high school student at TÜBİTAK Fen Lisesi (2021-2026), driven by a passion for solving complex problems through code and innovation. Scoring full marks in the 2021 LGS exam, I ranked in the top 100 among over 1 million candidates.</p>
+                    <p>As a TÜBİTAK Olympiad gold medalist and Codeforces Master (top 1.5% globally), I excel in designing efficient algorithms. My 2.5-year internships at TÜBİTAK BİLGEM B3 Labs and UEKAE Cryptology Unit deepened my expertise in cryptographic algorithms and secure systems.</p>
+                    <p>I’m an active member of the JetBrains Youth AI Club, exploring deep learning and GPT models. I’ve taught machine learning to 20-30 peers across 10+ sessions, sharing my knowledge through hands-on workshops. My philosophy: “Every problem is an opportunity to innovate.”</p>
+                    <canvas class="skills-radar" width="400" height="400"></canvas>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=450" alt="Dost Seferoğlu" loading="lazy">
+                </div>
             </div>
         </div>
     </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <div id="projects-list" class="card-container">
-            <div class="card">Reflection on Parametric Curves (C++)</div>
-            <div class="card">Randomly Arranged Tree (RAT) — Efficient Associative Array</div>
-            <div class="card">Stock Market Analysis Toolkit (Planned)</div>
-            <div class="card">Unmanned Underwater Vehicle — PID System (MATLAB Simulink)</div>
+
+    <!-- Achievements -->
+    <section id="achievements" data-aos="fade-up">
+        <div class="container achievements-container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="featured-achievement" data-aos="zoom-in">
+                <h3>TÜBİTAK Olympiad Gold</h3>
+                <p>Secured the prestigious Gold Medal at the 32nd TÜBİTAK National Science Olympiad in Informatics, showcasing exceptional problem-solving skills.</p>
+                <p class="achievement-date">2024</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="achievement-title">CodeFest 2025 Runner-Up</h3>
+                    <p class="achievement-desc">Achieved second place in the highly competitive CodeFest 2025.</p>
+                    <p class="achievement-date">2025</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="achievement-title">İstanbul Science Olympiads Silver</h3>
+                    <p class="achievement-desc">Earned a Silver Medal in the İstanbul Science Olympiads.</p>
+                    <p class="achievement-date">2024</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="achievement-title">TÜBİTAK Olympiad Bronze</h3>
+                    <p class="achievement-desc">31st TÜBİTAK National Science Olympiad (Informatics).</p>
+                    <p class="achievement-date">2023</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="achievement-title">Codeforces Master</h3>
+                    <p class="achievement-desc">Top 1.5% globally in competitive programming.</p>
+                    <p class="achievement-date">2024</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3 class="achievement-title">Iranian Combinatorics Finalist</h3>
+                    <p class="achievement-desc">Only team from Türkiye in ICO 2024.</p>
+                    <p class="achievement-date">2024</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="600">
+                    <h3 class="achievement-title">JetBrains Youth Silver</h3>
+                    <p class="achievement-desc">Math Track, JetBrains Youth Challenge.</p>
+                    <p class="achievement-date">2024</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="700">
+                    <h3 class="achievement-title">TeknoFest 2022 Finalist</h3>
+                    <p class="achievement-desc">Unmanned Underwater Vehicle with Team GÖKÇEL.</p>
+                    <p class="achievement-date">2022</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="800">
+                    <h3 class="achievement-title">Kanguru Language Winner</h3>
+                    <p class="achievement-desc">Absolute Winner, KGL 2023 B2 Division.</p>
+                    <p class="achievement-date">2023</p>
+                </div>
+                <div class="achievement-card" data-aos="fade-up" data-aos-delay="900">
+                    <h3 class="achievement-title">APIO 2024 Participant</h3>
+                    <p class="achievement-desc">Asia Pacific Informatics Olympiad.</p>
+                    <p class="achievement-date">2024</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Experience -->
+    <section id="experience" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Intern, Cryptology</h3>
+                        <p class="timeline-desc">TÜBİTAK BİLGEM B3 Labs & UEKAE Cryptology Unit<br>Developed and optimized security algorithms, enhanced encryption methods, and contributed to national cryptographic projects.</p>
+                        <p class="timeline-period">2022 - 2024</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Problemsetter & Organizer</h3>
+                        <p class="timeline-desc">AlgoLeague<br>Designed challenging problems for global coding competitions and organized algorithm and deep learning training camps.</p>
+                        <p class="timeline-period">2023 - Present</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Peer Instructor</h3>
+                        <p class="timeline-desc">Self-Organized<br>Conducted 10+ machine learning sessions for 20-30 students, developing TensorFlow content and leading AI workshops.</p>
+                        <p class="timeline-period">2023 - 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-modal="uuv">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=360&h=220" alt="Unmanned Underwater Vehicle">
+                    <h3 class="project-card-title">Unmanned Underwater Vehicle</h3>
+                    <p class="project-card-description">Designed a PID control system for a UUV with Team GÖKÇEL, achieving finalist status at TeknoFest 2022.</p>
+                    <ul class="project-card-tech">
+                        <li>MATLAB</li>
+                        <li>Simulink</li>
+                        <li>PID Control</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/Dost22" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-modal="rat">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=360&h=220" alt="Randomly Arranged Tree">
+                    <h3 class="project-card-title">Randomly Arranged Tree</h3>
+                    <p class="project-card-description">Developed an efficient associative array data structure, submitted to TÜBİTAK 2204A.</p>
+                    <ul class="project-card-tech">
+                        <li>C++</li>
+                        <li>Data Structures</li>
+                        <li>Algorithms</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/Dost22/RDA" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="300" data-modal="ai">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=360&h=220" alt="AI Project">
+                    <h3 class="project-card-title">JetBrains AI Project</h3>
+                    <p class="project-card-description">Built a deep learning model for AI competitions, leveraging TensorFlow and PyTorch.</p>
+                    <ul class="project-card-tech">
+                        <li>Python</li>
+                        <li>TensorFlow</li>
+                        <li>PyTorch</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/Dost22" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal" id="modal-uuv">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900" alt="Unmanned Underwater Vehicle">
+            <h3>Unmanned Underwater Vehicle</h3>
+            <p>Collaborated with Team GÖKÇEL to design a PID control system for an Unmanned Underwater Vehicle, achieving finalist status at TeknoFest 2022. Utilized MATLAB Simulink for simulation and tuning.</p>
+            <p><strong>Technologies:</strong> MATLAB, Simulink, PID Control</p>
+            <p><a href="https://github.com/Dost22" target="_blank">View on GitHub</a></p>
+        </div>
+    </div>
+    <div class="modal" id="modal-rat">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900" alt="Randomly Arranged Tree">
+            <h3>Randomly Arranged Tree</h3>
+            <p>Created an efficient associative array data structure called Randomly Arranged Tree (RAT). Authored a research paper and submitted to TÜBİTAK 2204A National Project Competition.</p>
+            <p><strong>Technologies:</strong> C++, Data Structures, Algorithms</p>
+            <p><a href="https://github.com/Dost22/RDA" target="_blank">View on GitHub</a></p>
+        </div>
+    </div>
+    <div class="modal" id="modal-ai">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900" alt="AI Project">
+            <h3>JetBrains AI Project</h3>
+            <p>Developed a deep learning model for AI competitions as part of JetBrains Youth AI Club, utilizing TensorFlow and PyTorch for advanced neural network architectures.</p>
+            <p><strong>Technologies:</strong> Python, TensorFlow, PyTorch</p>
+            <p><a href="https://github.com/Dost22" target="_blank">View on GitHub</a></p>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <section id="gallery" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Event Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-image="1" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&h=200" alt="TÜBİTAK Olympiad 2024" loading="lazy">
+                    <div class="gallery-caption">Receiving TÜBİTAK Gold Medal, 2024</div>
+                </div>
+                <div class="gallery-item" data-image="2" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&h=200" alt="CodeFest 2025" loading="lazy">
+                    <div class="gallery-caption">CodeFest 2025 Runner-Up Ceremony</div>
+                </div>
+                <div class="gallery-item" data-image="3" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&h=200" alt="ACTS 2024 Romania" loading="lazy">
+                    <div class="gallery-caption">Training at ACTS 2024, Romania</div>
+                </div>
+                <div class="gallery-item" data-image="4" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&h=200" alt="İstanbul Science Olympiads" loading="lazy">
+                    <div class="gallery-caption">İstanbul Science Olympiads Silver, 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-modal-content">
+            <span class="gallery-modal-close">×</span>
+            <span class="gallery-modal-prev">&larr;</span>
+            <span class="gallery-modal-next">&rarr;</span>
+            <img src="" alt="Gallery Image">
+            <div class="gallery-modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- Training -->
+    <section id="training" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Training</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">ACTS 2024, Romania</h3>
+                        <p class="timeline-desc">Intensive training in algorithms, mathematics, and machine learning in Braşov.</p>
+                        <p class="timeline-period">2024</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">ACTS 2025, Serbia</h3>
+                        <p class="timeline-desc">Advanced training in competitive programming and AI in Belgrade.</p>
+                        <p class="timeline-period">2025</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">JetBrains Youth AI Club</h3>
+                        <p class="timeline-desc">Active participant in deep learning and GPT model training, competing in AI projects.</p>
+                        <p class="timeline-period">2023 - Present</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Algorithm -->
+    <section id="algorithm" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Featured Algorithm: Randomly Arranged Tree</h2>
+            <div class="algorithm-container">
+                <p>Explore my innovative Randomly Arranged Tree (RAT), an efficient associative array data structure designed for optimal performance. Below is a simplified visualization of its structure.</p>
+                <canvas class="algorithm-canvas"></canvas>
+                <p><a href="https://github.com/Dost22/RDA" target="_blank" class="cta-button">View Source Code</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Connect with Me</h2>
+            <p>Reach out at <a href="mailto:dostseferoglu@gmail.com">dostseferoglu@gmail.com</a> or +90 5349652857.</p>
+            <form action="https://formspree.io/f/xqaqzdpy" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Name" required aria-label="Name">
+                <input type="email" name="email" placeholder="Email" required aria-label="Email">
+                <textarea name="message" placeholder="Message" rows="8" required aria-label="Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer data-aos="fade-up">
+        <p>Designed & Built by Dost Seferoğlu © 2025</p>
+        <a href="#home" class="back-to-top">Back to Top</a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script>
-        const carouselSlide = document.querySelector('.carousel-slide');
-        const carouselImages = document.querySelectorAll('.carousel-slide img');
-        const dots = document.querySelectorAll('.carousel-dot');
-        let counter = 0;
-        const slideWidth = carouselImages[0].clientWidth;
-
-        function goToSlide(index) {
-            carouselSlide.style.transform = `translateX(-${slideWidth * index}px)`;
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            counter = index;
-        }
-
-        function nextSlide() {
-            goToSlide((counter + 1) % carouselImages.length);
-        }
-
-        function prevSlide() {
-            if (counter <= 0) return;
-            goToSlide(counter - 1);
-        }
-
-        function currentSlide(index) {
-            goToSlide(index);
-        }
-
-        let interval = setInterval(nextSlide, 2500);
-        goToSlide(0);
-
-        carouselSlide.onmousedown = () => clearInterval(interval);
-
-        window.addEventListener('resize', () => {
-            slideWidth = carouselImages[0].clientWidth;
-            goToSlide(counter);
+        // Initialize AOS
+        AOS.init({
+            duration: 1200,
+            easing: 'ease-in-out',
+            once: true
         });
 
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
+        // Debug logging
+        console.log('Portfolio script loaded');
+
+        // Mobile menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            console.log('Menu toggled:', navLinks.classList.contains('active'));
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = anchor.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    console.log('Scrolled to:', targetId);
+                } else {
+                    console.error('Target not found:', targetId);
                 }
             });
-        }, {
-            threshold: 0.15
         });
-        sections.forEach(section => {
-            observer.observe(section);
+
+        // Sticky nav effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 150) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Hero canvas (Three.js code rain effect)
+        const canvas = document.querySelector('.hero-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 5;
+
+        const particles = [];
+        for (let i = 0; i < 100; i++) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = new Float32Array([Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5]);
+            geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+            const material = new THREE.PointsMaterial({ color: 0x00ffcc, size: 0.1 });
+            const particle = new THREE.Points(geometry, material);
+            particles.push(particle);
+            scene.add(particle);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.forEach(p => {
+                p.position.y -= 0.05;
+                if (p.position.y < -5) p.position.y = 5;
+            });
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Skills radar chart
+        const radarCanvas = document.querySelector('.skills-radar');
+        new Chart(radarCanvas, {
+            type: 'radar',
+            data: {
+                labels: ['C++', 'Python', 'MATLAB', 'TensorFlow', 'PyTorch', 'Data Structures', 'Algorithms', 'Math'],
+                datasets: [{
+                    label: 'Skills',
+                    data: [90, 85, 80, 75, 80, 95, 90, 85],
+                    backgroundColor: 'rgba(0, 255, 204, 0.2)',
+                    borderColor: 'rgba(0, 255, 204, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                        pointLabels: { font: { size: 14, family: 'Fira Code' }, color: '#e6f1ff' },
+                        ticks: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: '#e6f1ff', font: { family: 'Fira Code' } } }
+                }
+            }
+        });
+
+        // Subtle tilt effect for cards
+        VanillaTilt.init(document.querySelectorAll('.achievement-card, .project-card'), {
+            max: 5,
+            speed: 800,
+            glare: true,
+            'max-glare': 0.3
+        });
+
+        // Modal functionality (Projects)
+        const projectCards = document.querySelectorAll('.project-card');
+        const modals = document.querySelectorAll('.modal');
+        const modalCloses = document.querySelectorAll('.modal-close');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.dataset.modal;
+                const modal = document.getElementById(`modal-${modalId}`);
+                if (modal) {
+                    modal.style.display = 'flex';
+                    console.log('Modal opened:', modalId);
+                }
+            });
+        });
+
+        modalCloses.forEach(close => {
+            close.addEventListener('click', () => {
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                console.log('Modal closed');
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                console.log('Modal closed via background click');
+            }
+        });
+
+        // Gallery modal functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const galleryModal = document.querySelector('#gallery-modal');
+        const galleryModalImg = galleryModal.querySelector('img');
+        const galleryModalCaption = galleryModal.querySelector('.gallery-modal-caption');
+        const galleryModalClose = galleryModal.querySelector('.gallery-modal-close');
+        const galleryModalPrev = galleryModal.querySelector('.gallery-modal-prev');
+        const galleryModalNext = galleryModal.querySelector('.gallery-modal-next');
+
+        const galleryImages = [
+            { src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900', caption: 'Receiving TÜBİTAK Gold Medal, 2024' },
+            { src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900', caption: 'CodeFest 2025 Runner-Up Ceremony' },
+            { src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900', caption: 'Training at ACTS 2024, Romania' },
+            { src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900', caption: 'İstanbul Science Olympiads Silver, 2024' }
+        ];
+
+        let currentImageIndex = 0;
+
+        function openGalleryModal(index) {
+            currentImageIndex = index;
+            galleryModalImg.src = galleryImages[index].src;
+            galleryModalCaption.textContent = galleryImages[index].caption;
+            galleryModal.style.display = 'flex';
+            console.log('Gallery modal opened:', index);
+        }
+
+        function updateGalleryModal(index) {
+            currentImageIndex = index;
+            galleryModalImg.src = galleryImages[index].src;
+            galleryModalCaption.textContent = galleryImages[index].caption;
+        }
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                openGalleryModal(index);
+            });
+        });
+
+        galleryModalClose.addEventListener('click', () => {
+            galleryModal.style.display = 'none';
+            console.log('Gallery modal closed');
+        });
+
+        galleryModalPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateGalleryModal(currentImageIndex);
+            console.log('Gallery modal prev:', currentImageIndex);
+        });
+
+        galleryModalNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateGalleryModal(currentImageIndex);
+            console.log('Gallery modal next:', currentImageIndex);
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('gallery-modal')) {
+                galleryModal.style.display = 'none';
+                console.log('Gallery modal closed via background click');
+            }
+        });
+
+        // Accessibility: Focus management for modals
+        [modals, galleryModal].flat().forEach(modal => {
+            modal.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                    console.log('Modal closed via ESC key');
+                }
+            });
+        });
+
+        // Algorithm canvas (placeholder for RAT visualization)
+        const algorithmCanvas = document.querySelector('.algorithm-canvas');
+        const ctx = algorithmCanvas.getContext('2d');
+        ctx.fillStyle = '#00ffcc';
+        ctx.font = '20px Fira Code';
+        ctx.fillText('RAT Visualization (Placeholder)', 50, 150);
+
+        // Lazy load images
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.addEventListener('load', () => {
+                console.log('Image loaded:', img.src);
+            });
         });
     </script>
 </body>
