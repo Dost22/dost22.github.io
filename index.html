@@ -292,7 +292,11 @@
     const slideWidth = carouselImages[0].clientWidth;
 
     function goToSlide(index) {
-      carouselSlide.style.transform = `translateX(-${slideWidth * index}px)`;
+      let combinedWidth = 0;
+      for(let i = 0; i < index; i++) {
+        combinedWidth += carouselImages[i].clientWidth;
+      }
+      carouselSlide.style.transform = `translateX(-${slideWidth}px)`;
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
       });
