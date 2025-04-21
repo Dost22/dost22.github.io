@@ -103,6 +103,45 @@
     a:hover {
       text-decoration: underline;
     }
+    /* Carousel Styles */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      border-radius: 0.6rem;
+    }
+    .carousel-slide {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-slide img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover; /* Maintain aspect ratio and cover the container */
+      height: auto; /* Adjust height as needed */
+    }
+    .carousel-nav {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .carousel-dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background-color: #bbb;
+      opacity: 0.7;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .carousel-dot.active {
+      background-color: #00ffae;
+      opacity: 1;
+    }
+    /* End Carousel Styles */
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(-20px);}
       to {opacity: 1; transform: translateY(0);}
@@ -121,26 +160,23 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#achievements">Achievements</a>
-      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a> <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
-
   <section class="hero" id="home">
     <h1>Dost Seferoğlu</h1>
     <p class="tagline">Olympiad Gold Medalist | Codeforces Master | AI & Math Enthusiast</p>
   </section>
-
   <section id="about">
     <h2>About Me</h2>
-    <p>I’m a competitive programming geek, TÜBİTAK Olympiad gold medalist, and math enthusiast with a passion for algorithm design, AI challenges.</p>
+    <p>I’m a competitive programming enthusiast, TÜBİTAK Olympiad gold medalist, and math aficionado with a strong interest in algorithm design and AI challenges.</p>
     <div class="about-cards">
       <div class="card"><strong>Based in:</strong> Turkey</div>
       <div class="card"><strong>Favorite Language:</strong> C++, Python</div>
-      <div class="card"><strong>Specialties:</strong> Competitive Programming, Math Algorithms, AI</div>
+      <div class="card"><strong>Specialties:</strong> Competitive Programming, Math Algorithms, Artificial Intelligence</div>
     </div>
   </section>
-
   <section id="skills">
     <h2>Skills</h2>
     <div id="skills-list" class="badge-container">
@@ -157,7 +193,6 @@
       <span>Competitive Programming</span>
     </div>
   </section>
-
   <section id="achievements">
     <h2>Achievements</h2>
     <div id="achievements-list" class="card-container">
@@ -169,10 +204,67 @@
       <div class="card">Participant — APIO 2024</div>
       <div class="card">Master Rank — Codeforces (Top 1.5%)</div>
       <div class="card">Organizer & Problemsetter — AlgoLeague</div>
-      <div class="card">Participant, Algorithms and Code Training School (ACTS) in Serbia and Romania hosted by JetBrains
+      <div class="card">Participant, Algorithms and Code Training School (ACTS) in Serbia and Romania hosted by JetBrains</div>
     </div>
   </section>
-
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="card-container">
+      <div class="card">
+        <strong>Problemsetter</strong><br>
+        AlgoLeague · Serbest çalışan<br>
+        Ağu 2024 - Halen · 9 ay<br>
+        İstanbul, Türkiye · Uzaktan<br>
+        <br>
+        Algoleague platformu için problemsetting.<br>
+        <br>
+        <span style="color: #00ffae;">Competitive Programming, C++ ve +2 yetenek</span>
+      </div>
+      <div class="card">
+        <strong>TÜBİTAK BİLGEM U130 Kriptoloji Birimi</strong><br>
+        Stajyer<br>
+        Kas 2024 - Halen · 6 ay<br>
+        <br>
+        TÜBİTAK BİLGEM U130 kriptoloji birimi stajyeri<br>
+        <br>
+        <span style="color: #00ffae;">Competitive Programming ve Algoritmalar</span>
+      </div>
+      <div class="card">
+        <strong>Stajyer</strong><br>
+        Yarı zamanlı<br>
+        Eki 2022 - Kas 2024 · 2 yıl 2 ay<br>
+        <br>
+        TÜBİTAK BİLGEM bünyesindeki B3 Lab yazılım geliştirme ofisinde stajyerlik.<br>
+        <br>
+        <span style="color: #00ffae;">C++, Algoritmalar ve +3 yetenek</span>
+      </div>
+      <div class="card">
+        <strong>AI Developer</strong><br>
+        TFL.AI · Serbest çalışan<br>
+        Kas 2024 - Halen · 6 ay<br>
+        Gebze, Kocaeli, Türkiye<br>
+        <br>
+        TÜBİTAK Fen Lisesi Yapay Zeka Ekibi<br>
+        <br>
+        <span style="color: #00ffae;">Yapay Zeka, Python ve +2 yetenek</span>
+      </div>
+    </div>
+  </section>
+  <section id="showcase">
+    <h2>Showcase</h2>
+    <div class="carousel-container">
+      <div class="carousel-slide">
+        <img src="1739636275845.jpeg" alt="Showcase Image 1">
+        <img src="i3.jpeg" alt="Showcase Image 2">
+        <img src="i2.jpeg" alt="Showcase Image 3">
+      </div>
+      <div class="carousel-nav">
+        <span class="carousel-dot active" onclick="currentSlide(0)"></span>
+        <span class="carousel-dot" onclick="currentSlide(1)"></span>
+        <span class="carousel-dot" onclick="currentSlide(2)"></span>
+      </div>
+    </div>
+  </section>
   <section id="projects">
     <h2>Projects</h2>
     <div id="projects-list" class="card-container">
@@ -182,12 +274,56 @@
       <div class="card">Unmanned Underwater Vehicle — PID System (MATLAB Simulink)</div>
     </div>
   </section>
-
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:dostseferoglu@gmail.com">dostseferoglu@gmail.com</a></p>
     <p>GitHub: <a href="https://github.com/Dost22" target="_blank">github.com/Dost22</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/dost-sefero%C4%9Flu-072954258/" target="_blank">linkedin.com/in/dost-seferoğlu</a></p>
   </section>
+
+  <script>
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const carouselImages = document.querySelectorAll('.carousel-slide img');
+    const prevButton = document.querySelector('#prevBtn');
+    const nextButton = document.querySelector('#nextBtn');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    let counter = 0;
+    const slideWidth = carouselImages[0].clientWidth;
+
+    function goToSlide(index) {
+      carouselSlide.style.transform = `translateX(-${slideWidth * index}px)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      counter = index;
+    }
+
+    function nextSlide() {
+      if (counter >= carouselImages.length - 1) return;
+      goToSlide(counter + 1);
+    }
+
+    function prevSlide() {
+      if (counter <= 0) return;
+      goToSlide(counter - 1);
+    }
+
+    function currentSlide(index) {
+      goToSlide(index);
+    }
+
+    // Basic automatic sliding (optional)
+    setInterval(nextSlide, 3000); // Change image every 3 seconds
+
+    // Initial setup
+    goToSlide(0);
+
+    // Make sure the slide width is recalculated on resize
+    window.addEventListener('resize', () => {
+      slideWidth = carouselImages[0].clientWidth;
+      goToSlide(counter);
+    });
+  </script>
 </body>
 </html>
