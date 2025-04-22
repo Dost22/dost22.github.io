@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <style>
         :root {
+            /* Dark Mode */
             --bg-primary: #0d1a2d;
             --bg-secondary: #152238;
             --accent: #00ffcc;
@@ -22,6 +23,18 @@
             --nav-height: 5rem;
             --transition: all 0.4s ease;
             --gradient: linear-gradient(45deg, #00ffcc, #00b894);
+        }
+
+        [data-theme="light"] {
+            /* Light Mode */
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #e9ecef;
+            --accent: #007bff;
+            --accent-dark: #0056b3;
+            --text-primary: #1a2a44;
+            --text-secondary: #4b5e91;
+            --card-bg: #ffffff;
+            --gradient: linear-gradient(45deg, #007bff, #0056b3);
         }
 
         * {
@@ -36,6 +49,7 @@
             color: var(--text-primary);
             line-height: 1.8;
             overflow-x: hidden;
+            transition: var(--transition);
         }
 
         .container {
@@ -147,6 +161,40 @@
             transform: rotate(-45deg) translate(8px, -8px);
         }
 
+        /* Theme Toggle Button */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50px;
+            background: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-dark);
+        }
+
+        .theme-toggle i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.4s ease;
+        }
+
+        .theme-toggle .fa-sun {
+            display: none;
+        }
+
+        [data-theme="light"] .theme-toggle .fa-sun {
+            display: block;
+        }
+
+        [data-theme="light"] .theme-toggle .fa-moon {
+            display: none;
+        }
+
         /* Sections */
         section {
             padding: 8rem 0;
@@ -190,6 +238,10 @@
             background: linear-gradient(rgba(13, 26, 45, 0.95), rgba(13, 26, 45, 0.95));
             position: relative;
             overflow: hidden;
+        }
+
+        [data-theme="light"] .hero {
+            background: linear-gradient(rgba(245, 247, 250, 0.95), rgba(245, 247, 250, 0.95));
         }
 
         .hero-canvas {
@@ -928,6 +980,10 @@
                 <a href="#algorithm">Algorithm</a>
                 <a href="#contact">Contact</a>
             </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </div>
         </div>
     </nav>
 
@@ -961,7 +1017,7 @@
                 <div class="about-text">
                     <p>I’m a high school student at TÜBİTAK Fen Lisesi (2021-2026), driven by a passion for solving complex problems through code and innovation. Scoring full marks in the 2021 LGS exam, I ranked in the top 100 among over 1 million candidates.</p>
                     <p>As a TÜBİTAK Olympiad gold medalist and Codeforces Master (top 1.5% globally), I excel in designing efficient algorithms. My 2.5-year internships at TÜBİTAK BİLGEM B3 Labs and UEKAE Cryptology Unit deepened my expertise in cryptographic algorithms and secure systems.</p>
-                    <p>I’m an active member of the JetBrains Youth AI Club, exploring deep learning and GPT models. I’ve taught machine learning to 20-30 peers across 10+ sessions, sharing my knowledge through hands-on workshops.”</p>
+                    <p>I’m an active member of the JetBrains Youth AI Club, exploring deep learning and GPT models. I’ve taught machine learning to 20-30 peers across 10+ sessions, sharing my knowledge through hands-on workshops.</p>
                     <canvas class="skills-radar" width="400" height="400"></canvas>
                 </div>
                 <div class="about-image">
@@ -1165,7 +1221,7 @@
                     <img src="/assets/winter_camp.jpeg" alt="Dost at TÜBİTAK Winter Training Camp with friends and instructor" loading="lazy">
                     <div class="gallery-caption">TÜBİTAK Winter Camp, 2023</div>
                 </div>
-                    <div class="gallery-item" data-image="5" data-aos="fade-up" data-aos-delay="450">
+                <div class="gallery-item" data-image="5" data-aos="fade-up" data-aos-delay="450">
                     <img src="/assets/acts_serbia.jpeg" alt="Dost at ACTS 2025 Serbia" loading="lazy">
                     <div class="gallery-caption">Training at ACTS 2025, Serbia</div>
                 </div>
@@ -1264,6 +1320,25 @@
         // Debug logging
         console.log('Portfolio script loaded');
 
+        // Theme toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            console.log('Theme switched to:', newTheme);
+
+            // Update radar chart colors
+            updateRadarChart(newTheme);
+        });
+
         // Mobile menu
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -1335,40 +1410,62 @@
 
         // Skills radar chart
         const radarCanvas = document.querySelector('.skills-radar');
-        new Chart(radarCanvas, {
-            type: 'radar',
-            data: {
-                labels: ['C++', 'Python', 'MATLAB', 'TensorFlow', 'PyTorch', 'Data Structures', 'Algorithms', 'Math'],
-                datasets: [{
-                    label: 'Skills',
-                    data: [90, 85, 80, 75, 70, 95, 90, 85],
-                    backgroundColor: 'rgba(0, 255, 204, 0.2)',
-                    borderColor: 'rgba(0, 255, 204, 1)',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    r: {
-                        angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
-                        grid: { color: 'rgba(255, 255, 255, 0.2)' },
-                        pointLabels: { font: { size: 14, family: 'Fira Code' }, color: '#e6f1ff' },
-                        ticks: {
-                            display: true,
-                            stepSize: 10,
-                            font: { size: 12, family: 'Fira Code' },
-                            color: '#a3bffa',
-                            backdropColor: 'rgba(13, 26, 45, 0.8)'
-                        },
-                        suggestedMin: 50,
-                        suggestedMax: 100
-                    }
-                },
-                plugins: {
-                    legend: { labels: { color: '#e6f1ff', font: { family: 'Fira Code' } } }
-                }
+        let radarChart;
+
+        function updateRadarChart(theme) {
+            // Destroy existing chart if it exists
+            if (radarChart) {
+                radarChart.destroy();
             }
-        });
+
+            // Define theme-based colors
+            const isLightTheme = theme === 'light';
+            const gridColor = isLightTheme ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)';
+            const labelColor = isLightTheme ? '#1a2a44' : '#e6f1ff';
+            const tickColor = isLightTheme ? '#4b5e91' : '#a3bffa';
+            const backdropColor = isLightTheme ? 'rgba(245, 247, 250, 0.8)' : 'rgba(13, 26, 45, 0.8)';
+            const datasetBackgroundColor = isLightTheme ? 'rgba(0, 123, 255, 0.2)' : 'rgba(0, 255, 204, 0.2)';
+            const datasetBorderColor = isLightTheme ? 'rgba(0, 123, 255, 1)' : 'rgba(0, 255, 204, 1)';
+            const legendColor = isLightTheme ? '#1a2a44' : '#e6f1ff';
+
+            radarChart = new Chart(radarCanvas, {
+                type: 'radar',
+                data: {
+                    labels: ['C++', 'Python', 'MATLAB', 'TensorFlow', 'PyTorch', 'Data Structures', 'Algorithms', 'Math'],
+                    datasets: [{
+                        label: 'Skills',
+                        data: [90, 85, 80, 75, 70, 95, 90, 85],
+                        backgroundColor: datasetBackgroundColor,
+                        borderColor: datasetBorderColor,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: { color: gridColor },
+                            grid: { color: gridColor },
+                            pointLabels: { font: { size: 14, family: 'Fira Code' }, color: labelColor },
+                            ticks: {
+                                display: true,
+                                stepSize: 10,
+                                font: { size: 12, family: 'Fira Code' },
+                                color: tickColor,
+                                backdropColor: backdropColor
+                            },
+                            suggestedMin: 50,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: legendColor, font: { family: 'Fira Code' } } }
+                    }
+                }
+            });
+        }
+
+        // Initialize radar chart with the current theme
+        updateRadarChart(savedTheme);
 
         // Subtle tilt effect for cards
         VanillaTilt.init(document.querySelectorAll('.achievement-card, .project-card'), {
